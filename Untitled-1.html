@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<style>
+    #btns{
+        border: transparent;
+        border-radius: 10px;
+        width: 50px;
+        padding: 10px;
+        margin: auto;
+        margin-bottom: 14px;
+        margin-top: 14px;
+        text-align: center;
+        
+        
+    }
+    #min {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(4, 100px); 
+}
+
+#hed {
+    display: grid;
+    justify-content: center;
+    margin: auto;
+    width: 342px;
+    height: 50px;
+    margin-top: 8%;
+    text-align: right;
+    font-size: x-large;
+}
+body{
+    background-color: rgba(0, 0, 0, 0.628);
+}
+
+</style>
+<body>
+  
+    <div id="head">
+        <input id="hed" type="text" readonly>
+    </div>
+    <div id="min">
+        <button id="btns" onclick="C()">C</button>
+        <button id="btns" onclick="add('%')" value="%">% </button>
+        <button id="btns" onclick="add('/')"  value="/">/ </button>
+        <button id="btns" onclick="add('7')" value="7">7 </button>
+        <button id="btns" onclick="add('8')"  value="8">8</button>
+        <button id="btns" onclick="add('9')"  value="9">9</button>
+        <button id="btns" onclick="add('*')"  value="X">X</button>
+        <button id="btns" onclick="add('4')"  value="4">4</button>
+        <button id="btns" onclick="add('5')"  value="5">5</button>
+        <button id="btns" onclick="add('6')"  value="6">6</button>
+        <button id="btns" onclick="add('-')"  value="-">-</button>
+        <button id="btns" onclick="add('1')"  value="1">1</button>
+        <button id="btns" onclick="add('2')"  value="2">2</button>
+        <button id="btns" onclick="add('3')"  value="3">3</button>
+        <button id="btns" onclick="add('+')" value="+">+</button>
+        <button id="btns" onclick="add('0')" value="0">0</button>
+        <button id="btns" onclick="add('.')" value=".">.</button>
+        <button id="btns" onclick="result()" value="=">=</button>
+    </div>
+      <script>
+        function C(){
+            document.getElementById("hed").value = '';
+        }
+        function add(input) {
+            document.getElementById("hed").value += input;
+        }
+        function result(){
+            let display = document.getElementById("hed");
+            if(display.value === '' || display.value === "Error"){
+                display.value = "Error";
+                setTimeout(() => { display.value = ''; }, 1000);
+            }
+
+            try {
+                display.value = eval(display.value);
+            } catch (error) {
+                display.value = "Error"; 
+                setTimeout(() => { display.value = ''; }, 1000);
+                }  
+            }
+          
+        
+
+    </script>
+</body>
+</html>
